@@ -42,7 +42,7 @@ class InstaAPI:
             Printer.error(str(error))
             sys.exit()
 
-    def run(self):
+    def run(self) -> None:
         insta_loader = instaloader.Instaloader()
 
         try:
