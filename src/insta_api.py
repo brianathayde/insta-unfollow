@@ -2,6 +2,7 @@ import sys
 import colorama
 
 from instaloader import instaloader
+from instaloader.exceptions import BadCredentialsException
 from instaloader.instaloadercontext import InstaloaderContext
 from instaloader.nodeiterator import NodeIterator
 from instaloader.structures import Profile
@@ -28,7 +29,7 @@ class InstaAPI:
 
             return profile.get_followees()
         except Exception as error:
-            Printer.error(error)
+            Printer.error(str(error))
             sys.exit()
 
     # * Retorna todas as contas a quem o usuário logado é seguido
@@ -38,7 +39,7 @@ class InstaAPI:
 
             return profile.get_followers()
         except Exception as error:
-            Printer.error(error)
+            Printer.error(str(error))
             sys.exit()
 
     def run(self):
@@ -47,7 +48,7 @@ class InstaAPI:
         try:
             insta_loader.login(self.user.username, self.user.password)
         except Exception as error:
-            Printer.error(error)
+            Printer.error(str(error))
             sys.exit()
 
         Printer.primary('Buscando seguidores...')
